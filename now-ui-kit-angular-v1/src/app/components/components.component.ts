@@ -1,7 +1,10 @@
-import { Component, OnInit, Renderer, OnDestroy } from '@angular/core';
+import { Component, OnInit, Renderer, OnDestroy, ElementRef, HostListener } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import * as Rellax from 'rellax';
+import * as AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+
 
 @Component({
     selector: 'app-components',
@@ -30,6 +33,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     public isCollapsed1 = true;
     public isCollapsed2 = true;
 
+
     state_icon_primary = true;
 
     constructor( private renderer : Renderer, config: NgbAccordionConfig) {
@@ -46,6 +50,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+      AOS.init();
       var rellaxHeader = new Rellax('.rellax-header');
 
         var navbar = document.getElementsByTagName('nav')[0];
@@ -59,4 +64,5 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         var body = document.getElementsByTagName('body')[0];
         body.classList.remove('index-page');
     }
+
 }
